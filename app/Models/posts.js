@@ -42,7 +42,7 @@ mongoose.model('posts',
 					type : mongoose.Schema.Types.ObjectId,
 					ref : 'user'
 				}],
-				replied : [
+				replied : [{
 					name: {
 						type : mongoose.Schema.Types.ObjectId,
 						ref : 'user'
@@ -52,7 +52,7 @@ mongoose.model('posts',
 						type : mongoose.Schema.Types.ObjectId,
 						ref : 'user'
 					}]
-				]
+				}]
 			}]
 		}],
 		position : {

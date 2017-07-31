@@ -10,10 +10,7 @@ mongoose.model('media',
 			type : String,
 			enum : ['Video', 'Audio', 'Image', 'Document', 'Others']
 		},
-		media_size : {
-			on_disk : Number,
-			actual : Number
-		},
+		media_size : Number,
 		location : String,
 		mime_type : String,
 		md5_hash : String
