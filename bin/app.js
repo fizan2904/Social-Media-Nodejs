@@ -12,7 +12,7 @@ import expressValidator from 'express-validator';
 import passportConfig from '../config/passport';
 
 const app = express();
-const MONGO_URI = 'mongodb://localhost/chunter';
+const MONGO_URI = 'mongodb://localhost/x';
 const MongoStore = require('connect-mongo')(session);
 
 mongoose.Promise = global.Promise;
@@ -69,6 +69,7 @@ app.use(express.static(__dirname + '/../STATIC'));
 import Routes from './../app/Routes';
 
 app.use('/', Routes.index);
+app.use('/users', Routes.user);
 
 app.listen((process.env.PORT || 3000), () => {
 	console.log('Server started at port 3000');
