@@ -15,9 +15,9 @@ class user{
 	isLoggedIn(){
 		return new Promise((resolve, reject) => {
 			if(this.req.isAuthenticated){
-				resolve();
+				resolve(true);
 			}else{
-				reject();
+				reject(false);
 			}
 		});
 	}
@@ -25,9 +25,9 @@ class user{
 	isNotLoggedIn(){
 		return new Promise((resolve, reject) => {
 			if(this.req.isAuthenticated){
-				reject();
+				reject(false);
 			}else{
-				resolve();
+				resolve(true);
 			}
 		});
 	}

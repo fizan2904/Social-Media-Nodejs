@@ -58,9 +58,9 @@ class wall implements User{
 						.catch(err => { reject(err); })
 						.then(data => {
 							if(data != null || data != undefined){
-								Wall.updateById(this.req.params.wid, {$set : {this.req.body}}, (err, d) => {
+								Wall.updateById(this.req.params.wid, {$set : {this.req.body}}, {"new" : true}, (err, d) => {
 									if(err) { reject(err); }
-									resolve();
+									resolve(d);
 								});
 							}else{
 								reject('No wall with that id');
@@ -70,43 +70,10 @@ class wall implements User{
 		});
 	}
 
-	findWallWithAuth(){
+	findWall(){
 		return new Promise((resolve, reject) => {
 			this.isLoggedIn()
-				.catch(err => { reject(err); })
-				.then(() => {
-					Wall.findById(this.req.params.wid)
-						.catch(err => { reject(err); })
-						.then(data => {
-							if(data != null || data != undefined){
-								resolve(data);
-							}else{
-								reject('No wall with that id');
-							}
-						});
-				});
-		});
-	}
-
-	searchWallWithAuth(){
-		return new Promise((resolve, reject) => {
-			this.isLoggedIn()
-				.catch(err => { reject(err); })
-				.then(() => {
-					Wall.find({ "name" : { $regex: /this.req.body.search/, $options: 'i'}})
-						.catch(err => { reject(err); })
-						.then(data => {
-							resolve(data);
-						});
-				});
-		});
-	}
-
-	findWallWithoutAuth(){
-		return new Promise((resolve, reject) => {
-			this.isNotLoggedIn()
-				.catch(err => { reject(err); })
-				.then(() => {
+				.catch(_ => {
 					Wall.findById(this.req.params.wid)
 						.catch(err => {reject(err); })
 						.then(data => {
@@ -120,33 +87,16 @@ class wall implements User{
 								reject('No wall with that id');
 							}
 						});
-				});
-		});
-	}
-
-	searchWallWithoutAuth(){
-		return new Promise((resolve, reject) => {
-			this.isNotLoggedIn()
-				.catch(err => { reject(err); })
-				.then(() => {
-					Wall.find({$and: [{"name" : {$regex : /this.req.body.name/, $options : 'i'}}, { "wall_type": "Public"}]})
+				})
+				.then(_ => {
+					Wall.findById(this.req.params.wid)
 						.catch(err => { reject(err); })
 						.then(data => {
-							res.send(data);
-						});
-				});
-		});
-	}
-
-	searchOwnWalls(){
-		return new Promise((resolve, reject) => {
-			this.isLoggedIn()
-				.catch(err => {reject(err);})
-				.then(() => {
-					Wall.find({$and : [{"name": {$regex: /this.req.body.name/, $options: 'i'}}, {"uid" : this.req.session.passport.user._id}]})
-						.catch(err => { reject(err); })
-						.then(data => {
-							res.send(data);
+							if(data != null || data != undefined){
+								resolve(data);
+							}else{
+								reject('No wall with that id');
+							}
 						});
 				});
 		});
