@@ -6,6 +6,8 @@ import UserController from './User';
 
 const Wall = mongoose.model('wall');
 const User = mongoose.model('user');
+const Post = mongoose.model('posts');
+const Media = mongoose.model('media');
 
 class wall implements User{
 	constructor(req){
@@ -101,4 +103,12 @@ class wall implements User{
 				});
 		});
 	}
+
+	addMedia(){
+		return new Promise((resolve, reject) => {
+			let newMedia = new Media
+		});
+	}
 }
+
+export default wall;
