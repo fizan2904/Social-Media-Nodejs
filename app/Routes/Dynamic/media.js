@@ -4,7 +4,6 @@ import multer from 'multer';
 import shortid from 'shortid';
 import express from 'express';
 import mongoose from 'mongoose';
-import MediaController from './../../Controllers/Media';
 
 const router = express.Router();
 const Media = mongoose.model('media');
@@ -17,7 +16,6 @@ let upload = multer({
 		},
 		filename: function (req, file, cb) {
 			let mime = file.originalname.split(".");
-			console.log(mime);
 		    cb(null, shortid.generate() + '-' + Date.now() + '.' + mime[mime.length-1])
 		}
 	}) 

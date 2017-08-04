@@ -1,10 +1,11 @@
 'use strict';
 
 import express from 'express';
-import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+import mongoose from 'mongoose';
 
 const User = mongoose.model('user');
+const Media = mongoose.model('media');
 const UserDetails = mongoose.model('user_details');
 
 class user{
