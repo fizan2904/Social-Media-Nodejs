@@ -3,6 +3,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import WallController from './../../Controllers/Wall';
+import Multer from './../../config/multer';
 
 const router = express.Router();
 

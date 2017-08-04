@@ -18,7 +18,7 @@ mongoose.model('posts',
 			type : String
 		},
 		media_links : [{
-			oid : {
+			mid : {
 				type : mongoose.Schema.Types.ObjectId,
 				ref : 'media'
 			},
