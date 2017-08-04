@@ -6,14 +6,15 @@ mongoose.model('media',
 			type : mongoose.Schema.Types.ObjectId,
 			ref : 'user'
 		},
-		media_type : {
-			type : String,
-			enum : ['Video', 'Audio', 'Image', 'Document', 'Others']
-		},
-		media_size : Number,
-		location : String,
-		mime_type : String,
-		md5_hash : String
+		fieldname : String,
+		originalname : String,
+		encoding : String,
+		mimetype : String,
+		size : Number,
+		destination : String,
+		filename : String,
+		path : String,
+		buffer : String
 	}, {
 		timestamps : true
 	})

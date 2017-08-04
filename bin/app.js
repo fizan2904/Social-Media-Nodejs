@@ -70,6 +70,8 @@ import Routes from './../app/Routes';
 
 app.use('/', Routes.index);
 app.use('/users', Routes.user);
+app.use('/wall', Routes.wall);
+app.use('/media', Routes.media);
 
 app.listen((process.env.PORT || 3000), () => {
 	console.log('Server started at port 3000');

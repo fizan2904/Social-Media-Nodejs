@@ -62,7 +62,8 @@ class wall extends User{
 						.catch(err => { reject(err); })
 						.then(data => {
 							if(data != null || data != undefined){
-								Wall.updateById(this.req.params.wid, {$set : {this.req.body}}, {"new" : true}, (err, d) => {
+								let b = this.req.body;
+								Wall.updateById(this.req.params.wid, {$set : {b}}, {"new" : true}, (err, d) => {
 									if(err) { reject(err); }
 									resolve(d);
 								});
