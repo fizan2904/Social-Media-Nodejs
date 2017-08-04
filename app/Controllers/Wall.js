@@ -8,7 +8,7 @@ import UserController from './User';
 
 const Wall = mongoose.model('wall');
 const User = mongoose.model('user');
-const Post = mongoose.model('posts');
+const Post = mongoose.model('post');
 const Media = mongoose.model('media');
 
 class wall extends User{

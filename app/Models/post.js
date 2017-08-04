@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-mongoose.model('posts',
+mongoose.model('post',
 	mongoose.Schema({
 		uid : {
 			type : mongoose.Schema.Types.ObjectId,

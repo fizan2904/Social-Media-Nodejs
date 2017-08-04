@@ -1,5 +1,5 @@
 require('./user');
 require('./wall');
-require('./posts');
+require('./post');
 require('./media');
 require('./userDetails');
